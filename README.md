@@ -1,4 +1,4 @@
-# mlops-customer-churn-prediction
+# MLOPS-Customer-Churn-Prediction
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
@@ -57,15 +57,16 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
     │
     └── plots.py                <- Script untuk membuat visualisasi data
 ```
-Cara Menjalankan di Codespaces
+**Cara Menjalankan di Codespaces**
 1. Buka halaman repositori GitHub proyek ini.
 2. Klik tombol Code.
 3. Pilih tab Codespaces.
 4. Klik Create Codespace on main.
 5. Tunggu hingga lingkungan pengembangan selesai dibuat.
+
 Setelah Codespaces aktif, semua dependency akan terinstal secara otomatis dan proyek siap digunakan.
 --------
-Nama: Arif Rahman
-NIM: 235150201111012
-Mata Kuliah: Machine Learning Operations (Kelas B)
+**Nama: Arif Rahman**
+**NIM: 235150201111012**
+**Mata Kuliah: Machine Learning Operations (Kelas B)**
 
