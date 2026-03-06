@@ -64,9 +64,11 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
 4. Klik Create Codespace on main.
 5. Tunggu hingga lingkungan pengembangan selesai dibuat.
 
-Setelah Codespaces aktif, semua dependency akan terinstal secara otomatis dan proyek siap digunakan.
+### Setelah Codespaces aktif, semua dependency akan terinstal secara otomatis dan proyek siap digunakan.
 --------
-**Nama: Arif Rahman**
-**NIM: 235150201111012**
-**Mata Kuliah: Machine Learning Operations (Kelas B)**
+#### Nama: Arif Rahman
+
+#### NIM: 235150201111012
+
+#### Mata Kuliah: Machine Learning Operations (Kelas B) ####
 
