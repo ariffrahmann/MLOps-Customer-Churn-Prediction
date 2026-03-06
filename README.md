@@ -1,1 +1,62 @@
-# MLOps-Customer-Churn-Prediction
+# mlops-customer-churn-prediction
+
+<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
+    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
+</a>
+
+Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce menggunakan data perilaku dan transaksi pelanggan, sehingga perusahaan dapat melakukan intervensi lebih awal untuk mempertahankan pelanggan.
+
+## Project Organization
+
+```
+├── LICENSE            <- Lisensi open-source yang digunakan pada proyek
+├── Makefile           <- Berisi perintah otomatis seperti `make data` atau `make train`
+├── README.md          <- Dokumentasi utama proyek
+├── data
+│   ├── external       <- Data dari sumber pihak ketiga.
+│   ├── interim        <- Data sementara yang telah melalui proses transformasi
+│   ├── processed      <- Dataset final yang siap digunakan untuk pemodelan
+│   └── raw            <- Data mentah asli yang belum diproses
+│
+├── docs               <- Dokumentasi proyek menggunakan MkDocs
+│
+├── models             <- Model yang telah dilatih, hasil prediksi, atau ringkasan model
+│
+├── notebooks          <- Notebook Jupyter untuk eksplorasi dan eksperimen.
+│                         Penamaan menggunakan format:
+│                         nomor-versi-inisial-deskripsi
+│                         contoh: `1.0-arif-explorasi-data`
+│
+├── pyproject.toml     <- File konfigurasi proyek Python dan pengaturan tools
+│                         seperti formatter kode (misalnya black)
+│
+├── references         <- Referensi seperti kamus data, dokumentasi dataset,
+│                         dan materi pendukung lainnya
+│
+├── reports            <- Hasil analisis yang dihasilkan (HTML, PDF, dll)
+│   └── figures        <- Grafik dan visualisasi yang digunakan dalam laporan
+│
+├── requirements.txt   <- Daftar dependensi Python yang diperlukan untuk menjalankan proyek
+│
+├── setup.cfg          <- File konfigurasi untuk tools seperti flake8 (code linting)
+│
+└── src   <- Source code utama proyek
+    │
+    ├── __init__.py             <- Menjadikan folder src sebagai modul Python
+    │
+    ├── config.py               <- Menyimpan konfigurasi dan variabel penting proyek
+    │
+    ├── dataset.py              <- Script untuk mengambil atau memuat dataset
+    │
+    ├── features.py             <- Script untuk melakukan feature engineering
+    │
+    ├── modeling                
+    │   ├── __init__.py 
+    │   ├── predict.py          <- Script untuk melakukan prediksi menggunakan model          
+    │   └── train.py            <- Script untuk melatih model machine learning
+    │
+    └── plots.py                <- Script untuk membuat visualisasi data
+```
+
+--------
+
