@@ -4,7 +4,7 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce menggunakan data perilaku dan transaksi pelanggan, sehingga perusahaan dapat melakukan intervensi lebih awal untuk mempertahankan pelanggan.
+Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce menggunakan data perilaku dan transaksi pelanggan, sehingga dapat melakukan tindakan lebih lanjut untuk mempertahankan pelanggan.
 
 ## Project Organization
 
