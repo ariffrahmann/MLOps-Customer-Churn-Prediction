@@ -10,15 +10,12 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
 
 ```
 ├── LICENSE            <- Lisensi open-source yang digunakan pada proyek
-├── Makefile           <- Berisi perintah otomatis seperti `make data` atau `make train`
 ├── README.md          <- Dokumentasi utama proyek
 ├── data
 │   ├── external       <- Data dari sumber pihak ketiga.
 │   ├── interim        <- Data sementara yang telah melalui proses transformasi
 │   ├── processed      <- Dataset final yang siap digunakan untuk pemodelan
 │   └── raw            <- Data mentah asli yang belum diproses
-│
-├── docs               <- Dokumentasi proyek menggunakan MkDocs
 │
 ├── models             <- Model yang telah dilatih, hasil prediksi, atau ringkasan model
 │
@@ -27,18 +24,7 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
 │                         nomor-versi-inisial-deskripsi
 │                         contoh: `1.0-arif-explorasi-data`
 │
-├── pyproject.toml     <- File konfigurasi proyek Python dan pengaturan tools
-│                         seperti formatter kode (misalnya black)
-│
-├── references         <- Referensi seperti kamus data, dokumentasi dataset,
-│                         dan materi pendukung lainnya
-│
-├── reports            <- Hasil analisis yang dihasilkan (HTML, PDF, dll)
-│   └── figures        <- Grafik dan visualisasi yang digunakan dalam laporan
-│
 ├── requirements.txt   <- Daftar dependensi Python yang diperlukan untuk menjalankan proyek
-│
-├── setup.cfg          <- File konfigurasi untuk tools seperti flake8 (code linting)
 │
 └── src   <- Source code utama proyek
     │
@@ -54,8 +40,7 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
     │   ├── __init__.py 
     │   ├── predict.py          <- Script untuk melakukan prediksi menggunakan model          
     │   └── train.py            <- Script untuk melatih model machine learning
-    │
-    └── plots.py                <- Script untuk membuat visualisasi data
+
 ```
 **Cara Menjalankan di Codespaces**
 1. Buka halaman repositori GitHub proyek ini.
