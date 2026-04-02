@@ -12,7 +12,6 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
 ├── LICENSE            <- Lisensi open-source yang digunakan pada proyek
 ├── README.md          <- Dokumentasi utama proyek
 ├── data
-│   ├── external       <- Data dari sumber pihak ketiga.
 │   ├── interim        <- Data sementara yang telah melalui proses transformasi
 │   ├── processed      <- Dataset final yang siap digunakan untuk pemodelan
 │   └── raw            <- Data mentah asli yang belum diproses
