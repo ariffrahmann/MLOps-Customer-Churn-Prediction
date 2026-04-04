@@ -1,29 +1,42 @@
+import pandas as pd
 from pathlib import Path
 
-from loguru import logger
-from tqdm import tqdm
-import typer
+# konfigurasi
+BATCH_SIZE = 200
+DATA_EXTERNAL = "data/external/ecommerce_churn_kaggle.csv"
+RAW_FOLDER = Path("data/raw")
 
-from src.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
-
-app = typer.Typer()
+RAW_FOLDER.mkdir(parents=True, exist_ok=True)
 
 
-@app.command()
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = RAW_DATA_DIR / "dataset.csv",
-    output_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    # ----------------------------------------------
-):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Processing dataset...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Processing dataset complete.")
-    # -----------------------------------------
+def ingest_batch(batch_number: int):
+    """
+    Mengambil batch data dari dataset eksternal
+    lalu menyimpannya ke folder data/raw
+    """
+
+    offset = batch_number * BATCH_SIZE
+
+    df = pd.read_csv(
+        DATA_EXTERNAL,
+        skiprows=range(1, offset + 1),
+        nrows=BATCH_SIZE
+    )
+
+    # metadata batch
+    df["batch_id"] = batch_number
+    df["ingestion_date"] = pd.Timestamp.today().date()
+
+    output_file = RAW_FOLDER / f"batch_{batch_number:03d}_raw.csv"
+
+    df.to_csv(output_file, index=False)
+
+    print("===== INGESTION BERHASIL =====")
+    print("Batch:", batch_number)
+    print("Jumlah data:", len(df))
+    print("File tersimpan:", output_file)
+    print(df.head())
 
 
 if __name__ == "__main__":
-    app()
+    ingest_batch(batch_number=1)
