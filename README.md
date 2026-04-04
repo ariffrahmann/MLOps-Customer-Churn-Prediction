@@ -50,9 +50,26 @@ Proyek MLOPS untuk memprediksi churn pelanggan pada platform e-commerce mengguna
 
 ### Setelah Codespaces aktif, semua dependency akan terinstal secara otomatis dan proyek siap digunakan.
 --------
+### Menjalankan Data Pipeline
+1. Proses Pengambilan Data
+Gunakan script berikut untuk mengambil dataset dan menyimpannya ke dalam folder data/raw/:
+```
+python src/data/ingest_data.py
+```
+
+2. preprocessing
+Tahap ini bertujuan untuk membersihkan data serta menyiapkan dataset agar siap digunakan pada tahap modeling. Hasilnya akan disimpan di data/processed/:
+```
+python src/data/preprocess.py
+```
+4. Menjalankan Seluruh Pipeline
+Untuk menjalankan kedua proses secara berurutan:
+```
+python src/data/ingest_data.py && python src/data/preprocess.py
+```
+--------
 #### Nama: Arif Rahman
 
 #### NIM: 235150201111012
 
 #### Mata Kuliah: Machine Learning Operations (Kelas B) ####
-
