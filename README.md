@@ -62,7 +62,7 @@ Tahap ini bertujuan untuk membersihkan data serta menyiapkan dataset agar siap d
 ```
 python src/data/preprocess.py
 ```
-4. Menjalankan Seluruh Pipeline
+3. Menjalankan Seluruh Pipeline
 Untuk menjalankan kedua proses secara berurutan:
 ```
 python src/data/ingest_data.py && python src/data/preprocess.py
@@ -71,16 +71,38 @@ python src/data/ingest_data.py && python src/data/preprocess.py
 
 ## Data Versioning with DVC
 
-### Step:
-1. dvc init
-2. python ingest_data.py (generate data)
-3. dvc add dataset
-4. update data (continual learning)
-5. dvc add again
-6. dvc diff
+### Workflow:
+1. Melakukan inisialisasi DVC pada repository:
+```
+dvc init
+git commit -m "Initialize DVC"
+```
 
-### Result:
-Dataset bertambah secara bertahap
+2. Menjalankan script untuk mengambil:
+```
+python scripts/ingest_data.py
+```
+
+3. Melacak dataset menggunakan DVC:
+```
+dvc add data/raw/
+git add data/raw.dvc .gitignore
+git commit -m "Add dataset v1"
+```
+4. Menjalankan kembali proses ingestion untuk menambahkan data baru:
+```
+python scripts/ingest_data.py
+```
+5. Melakukan tracking ulang setelah ada perubahan data
+```
+dvc add data/raw/
+git add data/raw.dvc
+git commit -m "Update dataset v2"
+```
+6. Membandingkan perubahan dataset antar versi
+```
+dvc diff HEAD~1 HEAD
+```
 
 #### Nama: Arif Rahman
 
