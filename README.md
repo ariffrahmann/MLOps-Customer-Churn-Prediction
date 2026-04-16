@@ -68,6 +68,20 @@ Untuk menjalankan kedua proses secara berurutan:
 python src/data/ingest_data.py && python src/data/preprocess.py
 ```
 --------
+
+## Data Versioning with DVC
+
+### Step:
+1. dvc init
+2. python ingest_data.py (generate data)
+3. dvc add dataset
+4. update data (continual learning)
+5. dvc add again
+6. dvc diff
+
+### Result:
+Dataset bertambah secara bertahap
+
 #### Nama: Arif Rahman
 
 #### NIM: 235150201111012
