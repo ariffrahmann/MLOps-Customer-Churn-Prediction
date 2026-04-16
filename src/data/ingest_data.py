@@ -21,7 +21,7 @@ def ingest_data(source_path):
 
     print(f"Total data sebelumnya: {total_rows_taken} baris")
 
-    # ambil batch baru (lanjutan)
+    # ambil batch baru
     if source_path.endswith(".csv"):
         new_df = pd.read_csv(
             source_path,
@@ -42,7 +42,7 @@ def ingest_data(source_path):
         print("Tidak ada data baru untuk diambil.")
         return
 
-    # simpan pakai timestamp (non-destructive)
+    # simpan pakai timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_path = os.path.join(RAW_DIR, f"data_{timestamp}.csv")
 
