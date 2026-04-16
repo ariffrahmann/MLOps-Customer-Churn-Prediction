@@ -1,38 +1,55 @@
 import pandas as pd
 import os
+from datetime import datetime
 
 RAW_DIR = "data/raw"
-OUTPUT_FILE = "dataset.csv"
-# jumlah data per ingest
 CHUNK_SIZE = 100  
 
 def ingest_data(source_path):
-    # baca data baru
+    os.makedirs(RAW_DIR, exist_ok=True)
+
+    # cari total data yang sudah pernah diambil
+    existing_files = sorted([
+        f for f in os.listdir(RAW_DIR) if f.endswith(".csv")
+    ])
+
+    total_rows_taken = 0
+    for file in existing_files:
+        file_path = os.path.join(RAW_DIR, file)
+        df = pd.read_csv(file_path)
+        total_rows_taken += len(df)
+
+    print(f"Total data sebelumnya: {total_rows_taken} baris")
+
+    # ambil batch baru (lanjutan)
     if source_path.endswith(".csv"):
-        new_df = pd.read_csv(source_path, nrows=CHUNK_SIZE)
+        new_df = pd.read_csv(
+            source_path,
+            skiprows=range(1, total_rows_taken + 1),
+            nrows=CHUNK_SIZE
+        )
     elif source_path.endswith(".xlsx"):
-        new_df = pd.read_excel(source_path, nrows=CHUNK_SIZE)
+        new_df = pd.read_excel(
+            source_path,
+            skiprows=range(1, total_rows_taken + 1),
+            nrows=CHUNK_SIZE
+        )
     else:
         raise ValueError("Format file tidak didukung")
 
-    output_path = os.path.join(RAW_DIR, OUTPUT_FILE)
+    # kalau sudah habis
+    if new_df.empty:
+        print("Tidak ada data baru untuk diambil.")
+        return
 
-    # kalau dataset sudah ada → append
-    if os.path.exists(output_path):
-        old_df = pd.read_csv(output_path)
-        combined_df = pd.concat([old_df, new_df], ignore_index=True)
+    # simpan pakai timestamp (non-destructive)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_path = os.path.join(RAW_DIR, f"data_{timestamp}.csv")
 
-        print(f"Dataset lama: {len(old_df)} baris")
-        print(f"Data baru (batch): {len(new_df)} baris")
-        print(f"Total setelah update: {len(combined_df)} baris")
-    else:
-        combined_df = new_df
-        print(f"Dataset baru dibuat: {len(new_df)} baris")
+    new_df.to_csv(output_path, index=False)
 
-    # simpan
-    combined_df.to_csv(output_path, index=False)
-
-    print(f"Data berhasil disimpan ke: {output_path}")
+    print(f"Data batch baru: {len(new_df)} baris")
+    print(f"Disimpan ke: {output_path}")
 
 
 if __name__ == "__main__":
