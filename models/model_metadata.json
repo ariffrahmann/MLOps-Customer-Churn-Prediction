@@ -1,0 +1,44 @@
+{
+  "project": "Customer Churn Prediction",
+  "timestamp": "2026-04-24 09:03:14",
+  "best_model": {
+    "run_name": "run_3_aggressive",
+    "run_id": "2656ec3ba74e49c1b63cbe85c3ec71b9",
+    "algorithm": "XGBoost",
+    "registered_name": "ChurnModel-Production"
+  },
+  "best_parameters": {
+    "n_estimators": 300,
+    "learning_rate": 0.01,
+    "max_depth": 8
+  },
+  "best_metrics": {
+    "accuracy": 0.9,
+    "f1_score": 0.878,
+    "recall": 0.9
+  },
+  "experiment_summary": [
+    {
+      "run": "run_1_baseline",
+      "n_estimators": 100,
+      "learning_rate": 0.1,
+      "max_depth": 4,
+      "accuracy": 0.8
+    },
+    {
+      "run": "run_2_deep",
+      "n_estimators": 200,
+      "learning_rate": 0.05,
+      "max_depth": 6,
+      "accuracy": 0.8
+    },
+    {
+      "run": "run_3_aggressive",
+      "n_estimators": 300,
+      "learning_rate": 0.01,
+      "max_depth": 8,
+      "accuracy": 0.9
+    }
+  ],
+  "deployment_notes": "Model siap deploy. Recall 0.90 memenuhi kriteria LK-01 (target > 85%)"
+}
