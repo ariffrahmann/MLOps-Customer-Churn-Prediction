@@ -16,3 +16,5 @@ typer
 mlflow
 xgboost
 -e .
+pyyaml
+dvc
