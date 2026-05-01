@@ -104,6 +104,11 @@ git commit -m "Update dataset v2"
 dvc diff HEAD~1 HEAD
 ```
 
+
+## Model Registry
+Model yang saat ini aktif digunakan untuk inferensi adalah **ChurnModel-LK07 Version 2** dengan stage **Production**. Meskipun Version 1 mencatat akurasi lebih tinggi (0.90), model tersebut dilatih dengan kompleksitas tinggi (n_estimators=300, max_depth=8) yang berpotensi menyebabkan overfitting pada data training. Version 2 menggunakan parameter yang lebih konservatif (n_estimators=200, learning_rate=0.05, max_depth=6) sehingga diharapkan menghasilkan generalisasi yang lebih baik pada data produksi.
+
+
 #### Nama: Arif Rahman
 
 #### NIM: 235150201111012
