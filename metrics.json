@@ -1,0 +1,6 @@
+{
+  "accuracy": 0.9,
+  "f1_score": 0.8777777777777777,
+  "recall": 0.9,
+  "best_run": "run_3_aggressive"
+}
