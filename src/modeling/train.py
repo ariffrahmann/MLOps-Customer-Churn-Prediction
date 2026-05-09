@@ -20,6 +20,7 @@ PROCESSED_DIR   = "data/processed"
 MODELS_DIR      = "models"
 EXPERIMENT_NAME = "Customer-Churn-Prediction"
 os.makedirs(MODELS_DIR, exist_ok=True)
+mlflow.set_tracking_uri("file:./mlruns")
 
 
 def get_latest_file(directory):
