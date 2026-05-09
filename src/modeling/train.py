@@ -5,6 +5,7 @@ import mlflow.sklearn
 import pandas as pd
 import glob
 import os
+import json    
 import pickle
 import warnings
 warnings.filterwarnings("ignore")
@@ -19,6 +20,7 @@ PROCESSED_DIR   = "data/processed"
 MODELS_DIR      = "models"
 EXPERIMENT_NAME = "Customer-Churn-Prediction"
 os.makedirs(MODELS_DIR, exist_ok=True)
+mlflow.set_tracking_uri("file:./mlruns")
 
 
 def get_latest_file(directory):
@@ -123,7 +125,7 @@ def run_experiment(run_name, params):
         print(f"  Recall       : {recall:.4f}")
         print(f"{'='*55}\n")
 
-        return run_id
+        return run_id, {"accuracy": acc, "f1_score": f1, "recall": recall}
 
 
 # 3 run dengan parameter berbeda
@@ -131,26 +133,52 @@ if __name__ == "__main__":
 
     print("\n🚀 Memulai Eksperimen MLflow — Customer Churn Prediction\n")
 
+    all_results = {}
+
     # RUN 1 — Baseline
-    run_experiment("run_1_baseline", {
-        "n_estimators": 100,
+    run_id_1, metrics_1 = run_experiment("run_1_baseline", {
+        "n_estimators": 150,
         "learning_rate": 0.1,
         "max_depth": 4
     })
+    all_results["run_1_baseline"] = metrics_1
 
     # RUN 2 — Tree lebih dalam, learning rate lebih kecil
-    run_experiment("run_2_deep", {
+    run_id_2, metrics_2 = run_experiment("run_2_deep", {
         "n_estimators": 200,
         "learning_rate": 0.05,
         "max_depth": 6
     })
+    all_results["run_2_deep"] = metrics_2
 
     # RUN 3 — Estimator banyak, learning rate sangat kecil
-    run_experiment("run_3_aggressive", {
+    run_id_3, metrics_3 = run_experiment("run_3_aggressive", {
         "n_estimators": 300,
         "learning_rate": 0.01,
         "max_depth": 8
     })
+    all_results["run_3_aggressive"] = metrics_3
 
+    # ← TAMBAHAN BARU: Pilih run terbaik & save ke metrics.json
+    best_run_name = max(all_results, key=lambda k: all_results[k]["f1_score"])
+    best_metrics = all_results[best_run_name]
+
+    print(f"\n🏆 BEST RUN: {best_run_name}")
+    print(f"   Accuracy : {best_metrics['accuracy']:.4f}")
+    print(f"   F1-Score : {best_metrics['f1_score']:.4f}")
+    print(f"   Recall   : {best_metrics['recall']:.4f}")
+
+    # Save metrics terbaik ke metrics.json
+    metrics_output = {
+        "accuracy": float(best_metrics["accuracy"]),
+        "f1_score": float(best_metrics["f1_score"]),
+        "recall":   float(best_metrics["recall"]),
+        "best_run": best_run_name
+    }
+
+    with open("metrics.json", "w") as f:
+        json.dump(metrics_output, f, indent=2)
+
+    print(f"\n💾 metrics.json saved (best run: {best_run_name})")
     print("✅ Semua eksperimen selesai!")
     print("👉 Jalankan: mlflow ui --host 0.0.0.0 --port 5000\n")

@@ -15,6 +15,6 @@ tqdm
 typer
 mlflow
 xgboost
--e .
 pyyaml
 dvc
+joblib
