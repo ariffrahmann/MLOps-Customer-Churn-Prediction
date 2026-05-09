@@ -137,7 +137,7 @@ if __name__ == "__main__":
 
     # RUN 1 — Baseline
     run_id_1, metrics_1 = run_experiment("run_1_baseline", {
-        "n_estimators": 100,
+        "n_estimators": 150,
         "learning_rate": 0.1,
         "max_depth": 4
     })
